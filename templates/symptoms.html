@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details & Symptoms</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <div class="form-card">
+
+        <h2><i class="fa-solid fa-user-doctor blue-icon"></i> Patient Details</h2>
+
+        <form method="POST">
+
+            <!-- ROW 1 -->
+            <div class="form-row">
+                <div class="input-box">
+                    <i class="fa-solid fa-user blue-icon"></i>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-calendar blue-icon"></i>
+                    <input type="number" name="age" placeholder="Age" required>
+                </div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="form-row">
+                <div class="input-box">
+                    <i class="fa-solid fa-venus-mars blue-icon"></i>
+                    <select name="gender" required>
+                        <option value="">Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-phone blue-icon"></i>
+                    <input type="text" name="mobile" placeholder="Mobile Number">
+                </div>
+            </div>
+
+            <!-- ROW 3 -->
+            <div class="form-row">
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope blue-icon"></i>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-notes-medical blue-icon"></i>
+                    <input type="text" name="previous" placeholder="Previous Medical Issues">
+                </div>
+            </div>
+
+            <!-- Symptoms -->
+            <div class="input-box textarea-box">
+                <i class="fa-solid fa-virus blue-icon"></i>
+                <textarea name="symptoms" rows="4" placeholder="Enter symptoms (comma separated)" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fa-solid fa-stethoscope"></i> Get Recommendation
+            </button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

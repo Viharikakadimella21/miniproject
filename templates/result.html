@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Report</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="result-container">
+
+    <h2 class="report-title"><i class="fa-solid fa-file-medical blue-icon"></i> Patient Medical Report</h2>
+
+    <div class="card">
+        <p><i class="fa-solid fa-user blue-icon"></i> <b>Name:</b> {{ name }}</p>
+        <p><i class="fa-solid fa-cake-candles blue-icon"></i> <b>Age:</b> {{ age }}</p>
+        <p><i class="fa-solid fa-venus-mars blue-icon"></i> <b>Gender:</b> {{ gender }}</p>
+        <p><i class="fa-solid fa-phone blue-icon"></i> <b>Mobile:</b> {{ mobile }}</p>
+        <p><i class="fa-solid fa-envelope blue-icon"></i> <b>Email:</b> {{ email }}</p>
+        <p><i class="fa-solid fa-notes-medical blue-icon"></i> <b>Previous Issues:</b> {{ previous_issues }}</p>
+    </div>
+
+    <div class="card">
+        <h3><i class="fa-solid fa-virus blue-icon"></i> Symptoms Diagnosis</h3>
+        <ul>
+            {% for med in result %}
+            <li>{{ med }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- PDF Download Button -->
+    <form action="/download_pdf" method="POST">
+        <input type="hidden" name="name" value="{{ name }}">
+        <input type="hidden" name="age" value="{{ age }}">
+        <input type="hidden" name="gender" value="{{ gender }}">
+        <input type="hidden" name="mobile" value="{{ mobile }}">
+        <input type="hidden" name="email" value="{{ email }}">
+        <input type="hidden" name="previous_issues" value="{{ previous_issues }}">
+        {% for med in result %}
+            <input type="hidden" name="result[]" value="{{ med }}">
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">
+            <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+        </button>
+    </form>
+
+    <a href="/symptoms" class="back-btn"><i class="fa-solid fa-arrow-left blue-icon"></i> New Patient</a>
+
+</div>
+
+</body>
+</html>

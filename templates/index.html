@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Symptoms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Patient Details</h2>
+
+    <form id="patientForm" action="/result" method="POST">
+
+        <label>Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label>Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label>Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label>Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+        <label>Primary Medical Condition:</label>
+        <input type="text" id="condition" name="condition" placeholder="e.g., Diabetes, Hypertension">
+
+        <label>Current Medications:</label>
+        <input type="text" id="current_medications" name="current_medications" placeholder="List any current medications">
+
+        <label>Symptoms:</label>
+        <input type="checkbox" name="symptoms" value="fever"> Fever<br>
+        <input type="checkbox" name="symptoms" value="cough"> Cough<br>
+        <input type="checkbox" name="symptoms" value="headache"> Headache<br>
+        <input type="checkbox" name="symptoms" value="sore throat"> Sore Throat<br>
+        <input type="checkbox" name="symptoms" value="body pain"> Body Pain<br>
+        <input type="checkbox" name="symptoms" value="cold"> Cold<br>
+        <input type="checkbox" name="symptoms" value="vomiting"> Vomiting<br>
+        <input type="checkbox" name="symptoms" value="diarrhea"> Diarrhea<br>
+        <input type="checkbox" name="symptoms" value="allergy"> Allergy<br>
+        <input type="checkbox" name="symptoms" value="stomach ache"> Stomach Ache<br><br>
+
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('patientForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Function to check required fields
+    function checkFields() {
+        const name = document.getElementById('name').value.trim();
+        const age = document.getElementById('age').value.trim();
+        const gender = document.getElementById('gender').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+
+        // Enable submit if all required fields are filled
+        if(name && age && gender && mobile){
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    // Check fields on input change
+    form.addEventListener('input', checkFields);
+</script>
+</body>
+</html>
